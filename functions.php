@@ -196,7 +196,3 @@ require get_template_directory() . '/inc/theme-options/theme-options.php';
  */
 require get_template_directory() . '/inc/jetpack.php';
 
-
-// updater for WordPress.com themes
-if ( is_admin() )
-	include dirname( __FILE__ ) . '/inc/updater.php';
