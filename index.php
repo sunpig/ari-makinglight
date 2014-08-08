@@ -51,6 +51,4 @@ get_header(); ?>
 			</div><!-- #content -->
 		</div><!-- #primary .site-content -->
 
-<?php get_sidebar( 'secondary' ); ?>
-
 <?php get_footer(); ?>

@@ -11,6 +11,8 @@
 
 	</div><!-- #main -->
 
+	<?php get_sidebar( 'secondary' ); ?>
+
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<div class="site-info">
 			<?php do_action( 'ari_credits' ); ?>

@@ -44,6 +44,4 @@ get_header(); ?>
 			</div><!-- #content -->
 		</section><!-- #primary .site-content -->
 
-<?php get_sidebar( 'secondary' ); ?>
-
 <?php get_footer(); ?>
