@@ -190,9 +190,3 @@ require get_template_directory() . '/inc/tweaks.php';
  * Custom Theme Options.
  */
 require get_template_directory() . '/inc/theme-options/theme-options.php';
-
-/*
- * Load Jetpack compatibility file.
- */
-require get_template_directory() . '/inc/jetpack.php';
-
