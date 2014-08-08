@@ -20,11 +20,6 @@ a,
 	color: #8a8a8a;
 	text-decoration: underline;
 }
-.main-navigation a,
-.main-small-navigation a {
-	color: #8a8a8a;
-	text-decoration: none;
-}
 a:hover,
 .comment-meta a:hover,
 .entry-meta a:hover,
@@ -36,11 +31,6 @@ a:hover,
 	color: #b7b7b7;
 	text-decoration: underline;
 }
-.main-navigation a:hover,
-.main-navigation li.current_page_item > a,
-.main-navigation li.current_page_ancestor > a,
-.main-navigation li.current-menu-item > a,
-.main-navigation li.current-menu_ancestor > a,
 .site-title a:hover {
 	color: #b7b7b7;
 	text-decoration: none;
@@ -52,9 +42,6 @@ a:hover,
 }
 .entry-title a:hover {
 	text-decoration: none;
-}
-.main-navigation ul ul {
-	background-color: #1b1c1b;
 }
 .widget-title a {
 	color: #707070;
