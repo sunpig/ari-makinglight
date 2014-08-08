@@ -1116,61 +1116,6 @@ a.comment-reply-link {
 }
 
 
-/* =Infinite Scroll
--------------------------------------------------------------- */
-
-.infinite-scroll #content {
-	padding-bottom: 30px;
-}
-.infinite-scroll #nav-below,
-.infinite-scroll.neverending #colophon {
-	display: none;
-}
-.infinite-loader {
-	margin: 0;
-	width: 25px;
-	height: 23px;
-}
-#infinite-handle span {
-	background: rgb( 76, 76, 76 );
-	border-color: rgb( 76, 76, 76 );
-	border-radius: 3px;
-	font-size: 12px;
-	color: rgb( 255, 255, 255 );
-	padding: 0.6em 1em;
-}
-.infinity-end.neverending #colophon {
-	display: block;
-}
-.infinite-scroll.infinity-end #content {
-	padding-bottom: 0;
-}
-#infinite-footer .blog-info a {
-	color: #4c4c4c;
-}
-#infinite-footer .blog-credits a {
-	color: #999;
-}
-#infinite-footer .blog-credits {
-	color: #4c4c4c;
-}
-.color-dark .infinite-loader {
-	color: #707070;
-}
-.color-dark #infinite-footer .container {
-	background-color: rgba( 27, 28, 27, 0.8 );
-	border-color: #4c4c4c;
-}
-.color-dark #infinite-footer .blog-info a,
-.color-dark #infinite-footer .blog-credits a {
-	color: #8a8a8a;
-}
-.color-dark #infinite-footer .blog-credits {
-	color: #707070;
-}
-
-
-
 /* =Responsive Structure
 -------------------------------------------------------------- */
 
@@ -1196,15 +1141,6 @@ a.comment-reply-link {
 		width: 64.20581655%;
 	}
 }
-@media (max-width: 800px) {
-	#infinite-handle span {
-		text-align: center;
-	}
-	.infinite-loader {
-		height: 33px;
-		margin: 0 auto;
-	}
- }
 @media screen and (max-width: 786px) {
 	#page {
 		max-width: 786px;
