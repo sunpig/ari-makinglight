@@ -185,3 +185,8 @@ require get_template_directory() . '/inc/theme-options/theme-options.php';
  * Making Light sideblogs
  */
 require get_template_directory() . '/inc/makinglight/sideblog_widget.php';
+
+/**
+ * Making Light recent comments
+ */
+require get_template_directory() . '/inc/makinglight/recent_comments_widget.php';

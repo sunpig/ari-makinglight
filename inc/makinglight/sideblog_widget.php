@@ -49,13 +49,13 @@ class ML_Sideblog_Widget extends WP_Widget {
 	 */
 	public function form( $instance ) {
 		if ( isset( $instance[ 'title' ] ) ) {
-			$title = $instance[ 'title' ];
+			$title = esc_attr($instance[ 'title' ]);
 		}
 		else {
 			$title = __( 'Sideblog title', 'ml' );
 		}
 		if ( isset( $instance[ 'blog_id' ] ) ) {
-			$blog_id = $instance[ 'blog_id' ];
+			$blog_id = absint($instance[ 'blog_id' ]);
 		}
 		else {
 			$blog_id = __( 'Blog ID', 'ml' );
@@ -67,7 +67,7 @@ class ML_Sideblog_Widget extends WP_Widget {
 		</p>
 		<p>
 		<label for="<?php echo $this->get_field_id( 'blog_id' ); ?>"><?php _e( 'Blog ID:' ); ?></label> 
-		<input class="widefat" id="<?php echo $this->get_field_id( 'blog_id' ); ?>" name="<?php echo $this->get_field_name( 'blog_id' ); ?>" type="text" value="<?php echo esc_attr( $blog_id ); ?>">
+		<input class="widefat" id="<?php echo $this->get_field_id( 'blog_id' ); ?>" name="<?php echo $this->get_field_name( 'blog_id' ); ?>" type="number" min="1" value="<?php echo esc_attr( $blog_id ); ?>">
 		</p>
 		<?php 
 	}
@@ -85,7 +85,7 @@ class ML_Sideblog_Widget extends WP_Widget {
 	public function update( $new_instance, $old_instance ) {
 		$instance = array();
 		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
-		$instance['blog_id'] = ( ! empty( $new_instance['blog_id'] ) ) ? strip_tags( $new_instance['blog_id'] ) : '';
+		$instance['blog_id'] = ( ! empty( $new_instance['blog_id'] ) ) ? absint( $new_instance['blog_id'] ) : '';
 
 		return $instance;
 	}

@@ -1115,3 +1115,9 @@ a.comment-reply-link {
 .widget_ml-sideblog li {
 	padding-bottom:0;
 }
+
+/* ML recent comments widget
+----------------------------------------------------------------*/
+.widget_ml-recent-comments ul {
+	margin-bottom:1em;
+}
