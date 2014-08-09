@@ -1109,3 +1109,9 @@ a.comment-reply-link {
 #secondary .widget_archive li:first-child:before {
 	content: "";
 }
+
+/* Sideblog widgets
+----------------------------------------------------------------*/
+.widget_ml-sideblog li {
+	padding-bottom:0;
+}
