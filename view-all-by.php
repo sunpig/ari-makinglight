@@ -37,6 +37,35 @@ get_header(); ?>
 							?>
 						</ol>
 					</div>
+
+					<?php if ($comment_stats = $mcc->getYearlyCommentCountsByCommentAuthorEmail()) { ?>
+						<div class="comments-by-year-area">
+							<h3>Comment statistics for <?= $mcc->getOriginCommenterName() ?> </h3>
+							<table class="comments-by-year-table">
+								<thead>
+									<tr>
+										<th>Year</th>
+										<th>Number of comments posted</th>
+									</tr>
+								</thead>
+								<tbody>
+									<?php foreach($comment_stats as $year_posts) { ?>
+										<tr>
+											<td><?= $year_posts->year ?></td>
+											<td><?= $year_posts->comments ?></td>
+										</tr>
+									<?php } ?>
+								</tbody>
+							</table>
+							<?php if (!$mcc->areAllCommentsLoaded()) { ?>
+								<p>
+									Total: <?= $mcc->all_comments_count ?> comments
+									<a href="<?= $mcc->getViewAllUrl() ?>">View all these comments on a single page</a>
+									<?= $mcc->getLoadTimeWarning() ?>
+								</p>
+							<?php } ?>
+						</div>
+					<?php } ?>
 				<?php } ?>
 
 			</div><!-- #content -->

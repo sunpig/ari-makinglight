@@ -110,6 +110,27 @@ class ML_Commenter_Comments {
 		return get_permalink() . "?comment_id=" . $this->origin_comment->comment_ID . "&all=true";
 	}
 
+	public function getYearlyCommentCountsByCommentAuthorEmail() {
+		if (!$this->origin_comment) {
+			return false;
+		}
+
+		global $wpdb;
+		$query = $wpdb->prepare(
+			"SELECT year(comment_date) as year, count(*) as comments from $wpdb->comments where comment_author_email=%s group by year(comment_date) order by year(comment_date) asc",
+			$this->origin_comment->comment_author_email
+		);
+		$results = $wpdb->get_results($query);
+		return $results;
+	}
+
+	public function getOriginCommenterName() {
+		if (!$this->origin_comment) {
+			return '';
+		}
+		return $this->origin_comment->comment_author;
+	}
+
 	private function getCommentsByCommentAuthorEmail($comment_author_email, $n) {
 		$args = array(
 			'author_email' => $comment_author_email,

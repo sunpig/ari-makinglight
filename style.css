@@ -1123,3 +1123,21 @@ a.comment-reply-link {
 .widget_ml-recent-comments ul {
 	margin-bottom:1em;
 }
+
+/* View-all-by 
+----------------------------------------------------------------*/
+.comments-by-year-area {
+	margin-top:3em;
+}
+.comments-by-year-table {
+	border:1px solid black;
+}
+.comments-by-year-table th {
+	font-weight:bold;
+	background-color:#ddd;
+}
+.comments-by-year-table th,
+.comments-by-year-table td {
+	border:1px solid black;
+	padding:0.25em 0.5em;
+}
