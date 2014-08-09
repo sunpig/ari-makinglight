@@ -546,6 +546,9 @@ a:hover {
 	line-height: 1.4444444444em;
 	margin: 0 0 1.1111111111em 0;
 }
+.with-meta .entry-title {
+	margin:0 0 0 0;
+}
 .entry-title a {
 	color: #4c4c4c;
 }
@@ -588,14 +591,12 @@ a:hover {
 .comment-content ol ul {
 	margin-bottom: 0;
 }
-footer.entry-meta {
-	background: url(images/meta-border.jpg) 0 0 no-repeat;
-	clear: both;
+header .entry-meta {
 	font-size: 12px;
 	font-size: 1.2rem;
 	line-height: 1.5833333333em;
-	margin: 2.5em 0 0 0;
-	padding: 0.8333333333em 0 0.4166666666em 0;
+	margin: 0;
+	padding: 0 0 0.5em 0;
 }
 .posted-on {
 	display: block;
@@ -648,32 +649,34 @@ footer.entry-meta {
 	font-style: italic;
 	margin: -1.25em 0 2.0833333333em;
 }
-/* Author Info */
-#author-info {
+
+/* Author Info at the bottom of an entry */
+.entry-author-info {
 	border-top: 1px dotted #4c4c4c;
 	font-size: 12px;
 	font-size: 1.2rem;
-	margin: 0.4166666666em 0 0;
+	line-height: 1.5833333333em;
+	margin: 3em 0 0;
 	overflow: hidden;
 	padding: 1.25em 0 0.5833333334em;
 }
-#author-avatar {
+.entry-author-avatar {
 	float: left;
 	margin: 2px -50px 0 0;
 }
-.entry-content #author-avatar img {
+.entry-author-avatar img {
 	margin: 3px 0 0 0;
 }
-#author-description {
+.entry-author-description {
 	float: left;
 	margin-left: 65px;
 }
-#author-description h2 {
+.entry-author-description h2 {
 	font-size: 14px;
 	font-size: 1.4rem;
 	margin: 0;
 }
-#author-link {
+.entry-author-link {
 	font-family: 'Droid Serif', Times, serif;
 	font-style: italic;
 }
