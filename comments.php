@@ -37,12 +37,9 @@
 		<ol class="commentlist">
 			<?php
 				/* Loop through and list the comments. Tell wp_list_comments()
-				 * to use ari_comment() to format the comments.
-				 * If you want to overload this in a child theme then you can
-				 * define ari_comment() and that will be used instead.
-				 * See ari_comment() in functions.php for more.
+				 * to use ml_comment() to format the comments.
 				 */
-				wp_list_comments( array( 'callback' => 'ari_comment' ) );
+				wp_list_comments( array( 'callback' => 'ml_comment' ) );
 			?>
 		</ol>
 

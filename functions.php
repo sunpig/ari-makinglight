@@ -190,3 +190,13 @@ require get_template_directory() . '/inc/makinglight/sideblog_widget.php';
  * Making Light recent comments
  */
 require get_template_directory() . '/inc/makinglight/recent_comments_widget.php';
+
+/**
+ * Making Light view-all-by
+ */
+require get_template_directory() . '/inc/makinglight/view_all_by.php';
+
+/**
+ * Making Light template tags
+ */
+require get_template_directory() . '/inc/makinglight/template_tags.php';

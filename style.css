@@ -155,7 +155,7 @@ body {
 	}
 	#secondary {
 		display:block;
-		float:left;		
+		float:left;
 		width:270px;
 		padding-right:30px;
 	}
@@ -180,6 +180,8 @@ body {
 		display:table-cell;
 		vertical-align:top;
 		float:none;
+		width:270px;
+		padding-right:30px;
 	}
 	#tertiary {
 		display:table-cell;
