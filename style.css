@@ -825,6 +825,15 @@ video {
 .commentlist .children li {
 	border: none;
 }
+.commentlist.numbered {
+	counter-reset: abc;
+}
+.commentlist.numbered .commentmetadata:first-child:before {
+	position:inline;
+	counter-increment: abc;
+	content: "# " counter(abc);
+}
+
 article.comment,
 li.pingback {
 	overflow: hidden;
