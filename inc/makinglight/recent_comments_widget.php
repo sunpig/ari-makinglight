@@ -6,10 +6,14 @@
 
 class ML_Recent_Comments_Widget extends WP_Widget {
 
+	private $ml_recent_comments;
+
 	/**
 	 * Sets up the widgets name etc
 	 */
-	public function __construct() {
+	public function __construct($ml_recent_comments = null) {
+		$this->ml_recent_comments = $ml_recent_comments ?: new ML_Recent_Comments();
+
 		parent::__construct(
 			'ml-recent-comments', // Base ID
 			__('ML Recent Comments', 'ml'), // Name
@@ -93,28 +97,20 @@ class ML_Recent_Comments_Widget extends WP_Widget {
 	 * Display the recent comments content
 	 */
 	private function show_recent_comments() {
-		$comments = get_comments( apply_filters( 'widget_comments_args', array(
-			'number'      => 10,
-			'status'      => 'approve',
-			'post_status' => 'publish'
-		) ) );
+		$comments = $this->ml_recent_comments->getRecentComments(10, true, true);
 
 		$output = '<ul id="recentcomments">';
 		if ( $comments ) {
-			// Prime cache for associated posts. (Prime post term cache if we need it for permalinks.)
-			$post_ids = array_unique( wp_list_pluck( $comments, 'comment_post_ID' ) );
-			_prime_post_caches( $post_ids, strpos( get_option( 'permalink_structure' ), '%category%' ), false );
-
-			foreach ( (array) $comments as $comment) {
-				$output .=  '<li class="recentcomments"><a href="' . esc_url( get_comment_link($comment->comment_ID) ) . '">' . get_comment_author($comment->comment_ID) . ' on ' . get_the_title($comment->comment_post_ID) . '</a></li>';
-			}
+			wp_list_comments( array( 'callback' => 'ml_comment_recent_comment_sidebar' ), $comments );
 		}
 		$output .= '</ul>';
-		$output .= '<p><a href="recent-comments?n=1000">See last 1000 comments...</a></p>';
-		$output .= '<p><a href="recent-comments?n=2000">See last 2000 comments...</a></p>';
-		$output .= '<p><a href="recent-comments?n=4000">See last 4000 comments...</a></p>';
+		$output .= '<p><a href="recent-comments?n=100">See last 100 comments</a></p>';
+		$output .= '<p><a href="recent-comment-links?n=1000">Links to last 1000 comments</a></p>';
+		$output .= '<p><a href="recent-comment-links?n=2000">Links to last 2000 comments</a></p>';
+		$output .= '<p><a href="recent-comment-links?n=4000">Links to last 4000 comments</a></p>';
 		echo $output;
 	}
+
 }
 
 // register ML_Recent_Comments_Widget widget

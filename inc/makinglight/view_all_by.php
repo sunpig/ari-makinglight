@@ -6,6 +6,8 @@
 
 class ML_View_All_By {
 
+	const PAGE_SLUG = 'view-all-by';
+
 	/* 
 	 * In order to consume custom querystring variables, they must be added
 	 * to the list of public querystring variables available to WP_Query.
@@ -17,29 +19,20 @@ class ML_View_All_By {
 		return $vars;
 	}
 
-	/*
-	 * The view-all-by page should not appear in a list of content pages 
-	 */
-	function exclude_vab_page($pages) {
-		$count = count($pages);
-		for ($i = 0; $i < $count; $i++) {
-			$page = $pages[$i];
-			if ($page->post_name == 'view-all-by') {
-				unset($pages[$i]);
-			}
+	private static $viewAllByUrl;
+	public static function getViewAllByUrl() {
+		if (!self::$viewAllByUrl) {
+			self::$viewAllByUrl = get_permalink( get_page_by_path( 'view-all-by' ) );
 		}
-		// reindex array
-		$pages = array_values($pages);
-
-		return $pages;
+		return self::$viewAllByUrl;
 	}
-
 }
 
-$vab = new ML_View_All_By();
-add_filter( 'query_vars', array($vab, 'add_query_vars_filter') );
-// add_filter( 'template_include', array($vab, 'set_page_template') );
-add_filter( 'get_pages' , array($vab, 'exclude_vab_page') );
+function ml_view_all_by_apply_filters() {
+	$vab = new ML_View_All_By();
+	add_filter( 'query_vars', array($vab, 'add_query_vars_filter') );
+}
+ml_view_all_by_apply_filters();
 
 
 class ML_Commenter_Comments {
@@ -48,6 +41,12 @@ class ML_Commenter_Comments {
 	public $comments;
 	public $all_comments_count = 0;
 	public $populated_comments_count = 0;
+
+	private $ml_recent_comments;
+
+	public function __construct($ml_recent_comments = null) {
+		$this->ml_recent_comments = $ml_recent_comments ?: new ML_Recent_Comments();
+	}
 
 	public function populate($origin_comment_id, $max_count) {
 		if (!$this->origin_comment = get_comment($origin_comment_id)) {
@@ -117,7 +116,7 @@ class ML_Commenter_Comments {
 
 		global $wpdb;
 		$query = $wpdb->prepare(
-			"SELECT year(comment_date) as year, count(*) as comments from $wpdb->comments where comment_author_email=%s group by year(comment_date) order by year(comment_date) asc",
+			"SELECT year(comment_date_gmt) as year, count(*) as comments from $wpdb->comments where comment_author_email=%s and comment_approved = 1 group by year(comment_date_gmt) order by year(comment_date_gmt) asc",
 			$this->origin_comment->comment_author_email
 		);
 		$results = $wpdb->get_results($query);
@@ -132,12 +131,7 @@ class ML_Commenter_Comments {
 	}
 
 	private function getCommentsByCommentAuthorEmail($comment_author_email, $n) {
-		$args = array(
-			'author_email' => $comment_author_email,
-			'status' => 'approve',
-			'number' => $n
-		);
-		return get_comments($args);
+		return $this->ml_recent_comments->getRecentCommentsByCommentAuthorEmail($comment_author_email, $n, true, true);
 	}
 
 	private function getCountAllCommentsByCommentAuthorEmail($comment_author_email) {

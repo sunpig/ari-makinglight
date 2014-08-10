@@ -197,6 +197,11 @@ require get_template_directory() . '/inc/makinglight/recent_comments_widget.php'
 require get_template_directory() . '/inc/makinglight/view_all_by.php';
 
 /**
+ * Making Light view-all-by
+ */
+require get_template_directory() . '/inc/makinglight/recent_comments.php';
+
+/**
  * Making Light template tags
  */
 require get_template_directory() . '/inc/makinglight/template_tags.php';

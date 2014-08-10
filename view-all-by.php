@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: View-all-by
+ * Template Name: View All By
  *
  * Used for displaying all other comments by the author of a given comment. 
  */
