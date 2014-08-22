@@ -18,6 +18,7 @@ get_header(); ?>
 		<div id="primary" class="site-content">
 			<div id="content" role="main">
 
+
 				<h1 class="entry-title"><?= $mcc->getTitle() ?></h1>
 
 				<?php if ($mcc->comments) { ?>
