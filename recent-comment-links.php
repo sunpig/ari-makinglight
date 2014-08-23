@@ -8,7 +8,7 @@
 get_header(); ?>
 
 		<?php
-			$n = get_query_var('n');
+			$n = filter_input(INPUT_GET, "n", FILTER_VALIDATE_INT, array("options" => array("min_range" => 1, "max_range" => 4000)));
 			if (!$n) {
 				$n = 100;
 			}

@@ -4,38 +4,16 @@
  *
  */
 
-class ML_View_All_By {
-
-	const PAGE_SLUG = 'view-all-by';
-
-	/* 
-	 * In order to consume custom querystring variables, they must be added
-	 * to the list of public querystring variables available to WP_Query.
-	 * See http://codex.wordpress.org/Function_Reference/get_query_var
-	 */
-	function add_query_vars_filter( $vars ){
-		$vars[] = "comment_id";
-		$vars[] = "all";
-		return $vars;
-	}
+class ML_Commenter_Comments {
 
 	private static $viewAllByUrl;
+
 	public static function getViewAllByUrl() {
 		if (!self::$viewAllByUrl) {
 			self::$viewAllByUrl = get_permalink( get_page_by_path( 'view-all-by' ) );
 		}
 		return self::$viewAllByUrl;
 	}
-}
-
-function ml_view_all_by_apply_filters() {
-	$vab = new ML_View_All_By();
-	add_filter( 'query_vars', array($vab, 'add_query_vars_filter') );
-}
-ml_view_all_by_apply_filters();
-
-
-class ML_Commenter_Comments {
 
 	public $origin_comment;
 	public $comments;

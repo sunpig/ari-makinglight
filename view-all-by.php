@@ -8,8 +8,8 @@
 get_header(); ?>
 
 		<?php
-			$comment_id = get_query_var('comment_id');
-			$all = get_query_var('all');
+			$comment_id = filter_input(INPUT_GET, "comment_id", FILTER_VALIDATE_INT);
+			$all = filter_input(INPUT_GET, "all", FILTER_VALIDATE_BOOLEAN);
 			$max_count = $all ? 1000000 : 20;
 			$mcc = new ML_Commenter_Comments();
 			$mcc->populate($comment_id, $max_count);

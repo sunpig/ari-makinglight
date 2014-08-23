@@ -6,16 +6,6 @@
 
 class ML_Recent_Comments {
 
-	/* 
-	 * In order to consume custom querystring variables, they must be added
-	 * to the list of public querystring variables available to WP_Query.
-	 * See http://codex.wordpress.org/Function_Reference/get_query_var
-	 */
-	public function add_query_vars_filter( $vars ){
-		$vars[] = "n";
-		return $vars;
-	}
-
 	/*
 	 * Get a set of recent comments
 	 */
@@ -102,9 +92,3 @@ class ML_Recent_Comments {
 	}
 
 }
-
-function ml_recent_comments_apply_filters() {
-	$rc = new ML_Recent_Comments();
-	add_filter( 'query_vars', array($rc, 'add_query_vars_filter') );
-}
-ml_recent_comments_apply_filters();

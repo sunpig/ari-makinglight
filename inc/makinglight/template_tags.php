@@ -7,6 +7,8 @@
  *
  */
 function ml_comment($comment, $args, $depth) {
+	// Note the two element IDs with comment IDs in them for backwards compatibility
+	// with old Making Light comment permalinks */
 	$GLOBALS['comment'] = $comment;
 	switch ( $comment->comment_type ) :
 		case 'pingback' :
@@ -18,9 +20,9 @@ function ml_comment($comment, $args, $depth) {
 			break;
 		default :
 			?>
-			<li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
+			<li <?php comment_class(); ?> id="li-comment-<?= comment_ID(); ?>">
 				<article id="comment-<?php comment_ID(); ?>" class="comment">
-					<span id="<?php comment_ID(); ?>"></span><!-- backwards compatibility with old Making Light comment permalinks -->
+					<span id="<?php comment_ID(); ?>"></span>
 					<footer>
 						<div class="comment-author vcard">
 							<?php echo get_avatar( $comment, 50 ); ?>
@@ -36,7 +38,7 @@ function ml_comment($comment, $args, $depth) {
 							:::
 							<?php printf('<cite class="fn">%s</cite>', get_comment_author_link()); ?>
 							:::
-							<a href="<?= ML_View_All_By::getViewAllByUrl() ?>?comment_id=<?= comment_ID() ?>">(view all by)</a>
+							<a href="<?= ML_Commenter_Comments::getViewAllByUrl() ?>?comment_id=<?= comment_ID() ?>">(view all by)</a>
 							:::
 							<a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>"><time pubdate datetime="<?php comment_time( 'c' ); ?>">
 							<?php
@@ -117,7 +119,7 @@ function ml_comment_recent_comments($comment, $args, $depth) {
 					:::
 					<?php printf('<cite class="fn">%s</cite>', get_comment_author_link()); ?>
 					:::
-					<a href="<?= ML_View_All_By::getViewAllByUrl() ?>?comment_id=<?= comment_ID() ?>">(view all by)</a>
+					<a href="<?= ML_Commenter_Comments::getViewAllByUrl() ?>?comment_id=<?= comment_ID() ?>">(view all by)</a>
 					:::
 					on entry <a href="<?= esc_url(get_permalink($post)) ?>"><?= get_the_title($post) ?></a>
 					:::
@@ -158,7 +160,7 @@ function ml_comment_recent_comment_links($comment, $args, $depth) {
 					:::
 					<?php printf('<cite class="fn">%s</cite>', get_comment_author_link()); ?>
 					:::
-					<a href="<?= ML_View_All_By::getViewAllByUrl() ?>?comment_id=<?= comment_ID() ?>">(view all by)</a>
+					<a href="<?= ML_Commenter_Comments::getViewAllByUrl() ?>?comment_id=<?= comment_ID() ?>">(view all by)</a>
 					:::
 					on entry <a href="<?= esc_url(get_permalink($post)) ?>"><?= get_the_title($post) ?></a>
 					:::
