@@ -1106,6 +1106,30 @@ a.comment-reply-link {
 }
 
 
+
+/***************************************************************/
+/***************************************************************/
+/* MAKING LIGHT OVERRIDES */
+/***************************************************************/
+/***************************************************************/
+
+#respond .comment-form {
+	display: block;
+	clear: both;
+	overflow: hidden;
+}
+#respond .form-allowed-tags {
+	display: block;
+}
+#respond .form-allowed-tags code {
+	font-size: smaller;
+}
+
+#respond .comment-form .form-submit {
+	float:left;
+	margin-right:10px
+}
+
 /* Archives widget: make the links inline 
 -------------------------------------------------------------- */
 

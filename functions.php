@@ -205,3 +205,8 @@ require get_template_directory() . '/inc/makinglight/recent_comments.php';
  * Making Light template tags
  */
 require get_template_directory() . '/inc/makinglight/template_tags.php';
+
+/**
+ * Making Light comment preview
+ */
+require get_template_directory() . '/inc/makinglight/ml_comment_preview.php';

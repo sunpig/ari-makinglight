@@ -138,6 +138,42 @@ function ml_comment_recent_comments($comment, $args, $depth) {
 }
 
 /**
+ * Comment template variant for comment preview page.
+ *
+ */
+function ml_comment_preview($comment_author, $comment_author_email, $comment_author_url, $comment_raw, $post_id) {
+	$post = get_post($post_id);
+	$user = wp_get_current_user();
+	if ($user->exists()) {
+		$comment_author = $user->display_name;
+		$comment_author_email = $user->user_email;
+	}
+	?>
+	<ol class="commentlist">
+		<li <?php comment_class(); ?>>
+			<article class="comment">
+				<footer>
+					<div class="comment-author vcard">
+						<?php echo get_avatar( $comment_author_email, 50 ); ?>
+					</div><!-- .comment-author .vcard -->
+				</footer>
+
+				<div class="comment-content">
+					<div class="comment-meta commentmetadata">
+						<?php printf('<cite class="fn">%s</cite>', $comment_author); ?>
+						on entry <a href="<?= esc_url(get_permalink($post)) ?>"><?= get_the_title($post) ?></a>
+						:
+					</div><!-- .comment-meta .commentmetadata -->
+					<?= apply_filters( 'comment_text', $comment_raw ) ?>
+				</div>
+			</article><!-- #comment-## -->
+		</li>
+	</ol>
+	<?php
+}
+
+
+/**
  * Comment template variant for recent comment links page.
  *
  * Used as a callback by wp_list_comments() for displaying the comments.

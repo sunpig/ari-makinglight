@@ -60,6 +60,11 @@
 		<p class="nocomments"><?php _e( 'Comments are closed.', 'ari' ); ?></p>
 	<?php endif; ?>
 
-	<?php comment_form(); ?>
+	<?php 
+		$args = array(
+			'label_submit' => 'PREVIEW'
+		);
+		comment_form($args);
+	?>
 
 </div><!-- #comments .comments-area -->
