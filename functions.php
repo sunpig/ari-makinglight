@@ -184,29 +184,30 @@ require get_template_directory() . '/inc/theme-options/theme-options.php';
 /**
  * Making Light sideblogs
  */
-require get_template_directory() . '/inc/makinglight/sideblog_widget.php';
+require get_template_directory() . '/inc/makinglight/ml_sideblog_widget.php';
 
 /**
  * Making Light recent comments
  */
-require get_template_directory() . '/inc/makinglight/recent_comments_widget.php';
+require get_template_directory() . '/inc/makinglight/ml_recent_comments_widget.php';
 
 /**
  * Making Light view-all-by
  */
-require get_template_directory() . '/inc/makinglight/view_all_by.php';
+require get_template_directory() . '/inc/makinglight/ml_commenter_comments.php';
 
 /**
  * Making Light view-all-by
  */
-require get_template_directory() . '/inc/makinglight/recent_comments.php';
+require get_template_directory() . '/inc/makinglight/ml_recent_comments.php';
+
+/**
+ * Making Light comment preview
+ */
+require get_template_directory() . '/inc/makinglight/ml_comment_preview.php';
 
 /**
  * Making Light template tags
  */
 require get_template_directory() . '/inc/makinglight/template_tags.php';
 
-/**
- * Making Light comment preview
- */
-require get_template_directory() . '/inc/makinglight/ml_comment_preview.php';
